@@ -1,0 +1,36 @@
+# === Dependencias CORE para producción ===
+
+# Web scraping y parsing
+requests>=2.32.0
+beautifulsoup4>=4.13.0
+lxml>=6.0.0
+selectolax>=0.3.33           # Fast HTML parser
+
+# Base de datos ORM
+sqlalchemy>=2.0.43
+psycopg2-binary>=2.9.10
+alembic>=1.16.4
+
+# Procesamiento de datos
+pandas>=2.3.0
+numpy>=2.3.0
+
+# Configuración y logging
+python-dotenv>=1.1.0
+pydantic>=2.11.0
+
+# Utilidades
+click>=8.2.0              # Para CLI commands
+tqdm>=4.67.0              # Progress bars
+python-dateutil>=2.9.0    # Date parsing
+
+# Performance y monitoring
+psutil>=7.0.0             # System monitoring
+memory-profiler>=0.61.0   # Memory tracking
+
+# SEC parsing libraries
+secsgml>=0.3.1            # SGML parsing for SEC filings
+secxbrl>=0.1.1            # XBRL parsing for financial data (Note: using available version)
+
+# Scheduling and automation
+schedule>=1.2.0           # Task scheduling

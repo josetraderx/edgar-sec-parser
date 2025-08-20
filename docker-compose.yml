@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  # SEC Filing Extractor Application
+  edgar:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: edgar_extractor
+    volumes:
+      - .:/app
+      - ./logs:/app/logs
+    env_file:
+      - .env
+    depends_on:
+      - db
+    # Default command - can be overridden
+    # Examples:
+    # docker-compose run edgar python main.py --date 2024-01-15
+    # docker-compose run edgar python main.py --backfill 7
+    command: ["python", "tests/smoke/db_smoketest.py"]
+    restart: unless-stopped
+    networks:
+      - edgar-network
+
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    container_name: edgar_database
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-edgar}
+      POSTGRES_USER: ${POSTGRES_USER:-edgar_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-edgar_pass}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --lc-collate=C --lc-ctype=C"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
+    networks:
+      - edgar-network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  edgar-network:
+    driver: bridge

@@ -1,0 +1,158 @@
+{
+  "timestamp": "2025-08-19T17:16:16.252740",
+  "summary": {
+    "total_tests": 4,
+    "passed_tests": 2,
+    "failed_tests": 2,
+    "success_rate": 50.0
+  },
+  "test_results": [
+    {
+      "test": "realistic_ncsr_parsing",
+      "success": false,
+      "details": "Parsed 5540 chars in 0.006s"
+    },
+    {
+      "test": "performance_scalability",
+      "success": true,
+      "details": "Tested 4 size categories"
+    },
+    {
+      "test": "xbrl_fact_extraction",
+      "success": false,
+      "details": "Extracted 0 XBRL facts"
+    },
+    {
+      "test": "error_resilience",
+      "success": true,
+      "details": "8/8 error cases handled gracefully"
+    }
+  ],
+  "performance_metrics": {
+    "realistic_ncsr": {
+      "success": false,
+      "parsing_time": 0.006264686584472656,
+      "content_size": 5540,
+      "xbrl_facts_count": 0,
+      "extraction_method": "parser_integration_failed",
+      "throughput_kb_per_sec": 863.5956766631147
+    },
+    "scalability": {
+      "small": {
+        "content_size_bytes": 3805,
+        "content_size_mb": 0.0036287307739257812,
+        "num_holdings": 10,
+        "processing_time": 0.0240175724029541,
+        "memory_used_mb": -0.01171875,
+        "throughput_mb_per_sec": 0.1510864925499072,
+        "success": false,
+        "xbrl_facts": 0
+      },
+      "medium": {
+        "content_size_bytes": 51199,
+        "content_size_mb": 0.048827171325683594,
+        "num_holdings": 100,
+        "processing_time": 0.006224870681762695,
+        "memory_used_mb": 0.234375,
+        "throughput_mb_per_sec": 7.843885250296832,
+        "success": false,
+        "xbrl_facts": 0
+      },
+      "large": {
+        "content_size_bytes": 511999,
+        "content_size_mb": 0.4882802963256836,
+        "num_holdings": 500,
+        "processing_time": 0.0323333740234375,
+        "memory_used_mb": -0.75390625,
+        "throughput_mb_per_sec": 15.101433459178859,
+        "success": false,
+        "xbrl_facts": 0
+      },
+      "xlarge": {
+        "content_size_bytes": 1048575,
+        "content_size_mb": 0.9999990463256836,
+        "num_holdings": 1000,
+        "processing_time": 0.06392431259155273,
+        "memory_used_mb": -0.2421875,
+        "throughput_mb_per_sec": 15.643485331085566,
+        "success": false,
+        "xbrl_facts": 0
+      }
+    },
+    "xbrl_extraction": {
+      "success": false,
+      "facts_extracted": 0,
+      "content_size": 1513,
+      "extraction_rate": 0.0
+    },
+    "error_resilience": {
+      "empty_content": {
+        "handled_gracefully": true,
+        "processing_time": 0.002087831497192383,
+        "result_success": false,
+        "error_info": null
+      },
+      "malformed_sgml": {
+        "handled_gracefully": true,
+        "processing_time": 0.002567291259765625,
+        "result_success": false,
+        "error_info": null
+      },
+      "malformed_html": {
+        "handled_gracefully": true,
+        "processing_time": 0.001554250717163086,
+        "result_success": false,
+        "error_info": null
+      },
+      "invalid_xbrl": {
+        "handled_gracefully": true,
+        "processing_time": 0.003131866455078125,
+        "result_success": false,
+        "error_info": null
+      },
+      "mixed_encoding": {
+        "handled_gracefully": true,
+        "processing_time": 0.003021717071533203,
+        "result_success": false,
+        "error_info": null
+      },
+      "very_long_line": {
+        "handled_gracefully": true,
+        "processing_time": 0.0037047863006591797,
+        "result_success": false,
+        "error_info": null
+      },
+      "unicode_issues": {
+        "handled_gracefully": true,
+        "processing_time": 0.0015485286712646484,
+        "result_success": false,
+        "error_info": null
+      },
+      "nested_malformed": {
+        "handled_gracefully": true,
+        "processing_time": 0.0015707015991210938,
+        "result_success": false,
+        "error_info": null
+      }
+    }
+  },
+  "overall_metrics": {
+    "realistic_content": {
+      "throughput_kb_per_sec": 863.5956766631147,
+      "xbrl_extraction_rate": 0
+    },
+    "scalability": {
+      "max_throughput_mb_per_sec": 15.643485331085566,
+      "avg_throughput_mb_per_sec": 9.684972633277791
+    }
+  },
+  "system_info": {
+    "available_parsers": [
+      "SGMLParser",
+      "XBRLParser",
+      "FilingParser"
+    ],
+    "parser_manager_available": true,
+    "timestamp": "2025-08-19T17:16:16.252740"
+  }
+}
