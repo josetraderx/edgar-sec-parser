@@ -167,6 +167,11 @@ logs/*.txt
 !logs/README.md
 !logs/examples/
 
+# Internal documentation
+GUIA_PRESENTACION_CLIENTE.md
+**/internal/
+**/private/
+
 # Notebook outputs (may contain sensitive data)
 notebooks/notebook_outputs/
 notebooks/**/outputs/
@@ -175,6 +180,12 @@ notebooks/**/outputs/
 # Development and test artifacts
 cleanup_report.json
 parser_performance_report_*.json
+performance_report_*.json
+
+# Database backups and dumps
+*.sql
+*.dump
+db_backup_*
 
 # IDE files
 .vscode/
