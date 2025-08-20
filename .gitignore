@@ -160,12 +160,12 @@ cython_debug/
 
 # Edgar Project Specific
 *.log
-logs/*.log
-logs/*.out
-logs/*.json
-logs/*.txt
-!logs/README.md
+logs/
 !logs/examples/
+**/logs/*.log
+**/logs/*.out
+**/logs/*.json
+**/logs/*.txt
 
 # Internal documentation
 GUIA_PRESENTACION_CLIENTE.md
