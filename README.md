@@ -36,20 +36,22 @@ Edgar/
 │   └── extractors/         # Content extractors
 ├── tests/                  # Test suites
 │   ├── test_parsers/       # Parser unit tests
+│   ├── integration/        # Integration tests
 │   └── performance/        # Performance validation
 ├── scripts/                # Utility scripts
 ├── notebooks/              # Analysis notebooks
-└── docs/                   # Documentation
 ```
 
 ## 🚀 Quick Start
+
+See [SETUP.md](SETUP.md) for full installation and configuration instructions.
 
 ### Prerequisites
 - Python 3.11+
 - PostgreSQL database
 - Docker (optional)
 
-### Installation
+### Installation (Summary)
 
 1. **Clone and setup environment:**
 ```bash
@@ -62,24 +64,23 @@ pip install -r requirements.txt
 
 2. **Configure environment:**
 ```bash
-# Create environment configuration
 cp .env.example .env
 # Edit .env with your database credentials and settings
 ```
 
 3. **Database setup:**
 ```bash
-# Initialize database schema
 python -c "from sec_extractor.storage.database import DatabaseManager; DatabaseManager().create_tables()"
 ```
 
-4. **Verify installation:**
+4. **Run the demo:**
 ```bash
-python db_smoketest.py
+python demo_live_simple.py
 ```
 
-### Docker Setup
+### Docker Usage
 
+To run the system with Docker:
 ```bash
 docker-compose up -d
 ```
@@ -96,59 +97,23 @@ docker-compose up -d
 
 ## 🧪 Testing
 
-### System Verification
-```bash
-# Quick system health check
-python db_smoketest.py
-```
-
 ### Full Test Suite
 ```bash
-# Run all tests
 pytest tests/ -v
-
-# Run with coverage
 pytest tests/ --cov=sec_extractor --cov-report=html
 ```
 
 ### Performance Benchmarking
 ```bash
-# Parser performance validation
 python tests/performance/test_parser_performance.py
-```
-
-### Specific Component Testing
-```bash
-# Test individual parsers
-pytest tests/test_parsers/ -v
-
-# Test database integration
-pytest tests/test_storage/ -v
 ```
 
 ## 📚 Documentation & Resources
 
-- **[Project Roadmap](roadmap.md)** - Complete development history and milestones
+- **[SETUP.md](SETUP.md)** - Installation and configuration guide
 - **[Performance Reports](tests/performance/)** - Detailed benchmarking and validation results  
 - **[Parser Documentation](sec_extractor/parsers/)** - Technical implementation details
 - **[Database Schema](sec_extractor/storage/)** - Data models and relationships
-
-## 🔧 Key Components
-
-### Parsers
-- **SGMLParser**: Handles legacy SGML SEC filings
-- **XBRLParser**: Processes modern XBRL financial data
-- **FilingParser**: Unified parser orchestrator
-
-### Core Engine
-- **TieredProcessor**: Main processing pipeline
-- **ParserManager**: Parser coordination and selection
-- **DatabaseResultManager**: Results storage and management
-
-### Database Models
-- **Filing**: Enhanced with SGML/XBRL fields
-- **XbrlFact**: XBRL data points storage
-- **Dead Letter Queue**: Failed processing tracking
 
 ## 🛠️ Development
 
@@ -184,7 +149,7 @@ The system has been optimized for:
 
 ## 🐳 Production Deployment
 
-### Docker Compose
+To deploy with Docker Compose, see the example below:
 ```yaml
 version: '3.8'
 services:
@@ -194,7 +159,6 @@ services:
       - DATABASE_URL=postgresql://user:pass@db:5432/edgar
     depends_on:
       - db
-  
   db:
     image: postgres:13
     environment:
@@ -226,4 +190,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**�️ Edgar SEC Parser - Transforming regulatory document processing with intelligent parsing technology**
+**Edgar SEC Parser - Transforming regulatory document processing with intelligent parsing technology**

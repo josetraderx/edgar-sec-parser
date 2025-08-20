@@ -35,13 +35,38 @@ SEC_USER_AGENT=Your Company Name your.email@domain.com
 
 ## Docker Deployment
 
-See [DOCKER.md](DOCKER.md) for containerization instructions.
+To run the system with Docker, use the following commands:
+
+```bash
+docker-compose up -d
+```
+
+Example `docker-compose.yml`:
+```yaml
+version: '3.8'
+services:
+  edgar:
+    build: .
+    environment:
+      - DATABASE_URL=postgresql://user:pass@db:5432/edgar
+    depends_on:
+      - db
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=edgar
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+```
 
 ## Architecture
 
 - `sec_extractor/` - Main parser system
 - `scripts/` - Utility scripts
 - `tests/` - Test suite
+  - `integration/` - Integration tests
+  - `test_parsers/` - Parser unit tests
+  - `performance/` - Performance tests
 - `notebooks/` - Analysis examples
 
 ## Performance
